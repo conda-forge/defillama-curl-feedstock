@@ -10,19 +10,21 @@ source:
   sha256: 355edd61be13f377f8c768a9045749bd957f17a6ce53a57cf1eba834effce04f
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
     - pip
-    - python >=3.6.13
+    - python {{ python_min }}
   run:
     - pycurl >=7.44.1
-    - python >=3.6.13
+    - python >={{ python_min }}
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - defillama
 
